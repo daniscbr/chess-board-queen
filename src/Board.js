@@ -61,7 +61,6 @@
       );
     },
 
-
     /*
          _             _     _
      ___| |_ __ _ _ __| |_  | |__   ___ _ __ ___ _
@@ -92,7 +91,6 @@
 
     getCol: function(colIndex) {
       var columnArray = [];
-
       for (var i = 0; i < this.rows().length; i++) {
         columnArray.push(this.rows()[i][colIndex]);
       }
@@ -106,7 +104,6 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-
       //iterate through rows calling hasRowConflict
       for (var i = 0; i < this.get('n'); i++) {
         //if we find true we can break and return true;
@@ -142,28 +139,61 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
+
+    getDiagonal: function(diagonalColumnIndexAtFirstRow, type) {
+      //create a diagonal array
+      var diagonal = [];
+      //create coordinates variable e.g. (0, columnIndex)
+      //var columnIndex;
+      //var rowIndex;
+      //check to see which diagonal type
+
+      if (type === 'major') {
+      //iterate over diagonal starting at column index
+        for (var rowIndex = 0; rowIndex < this.get('n'); rowIndex++) {
+          //if coordinates are in bound we push the val to the diag array
+          if (this._isInBounds(rowIndex, columnIndex)) {
+            diagonal.push(this.rows()[rowIndex][columnIndex]);
+          }
+          //step to next coordinate (X+1, Y+1)
+
+        }
+
+      } else {
+      //iterate over diagonal starting at column index
+      //(while row < # of rows)
+        //if coordinates are in bound we push the val to the diag array
+        //step to next coordinate (X+1, Y-1)
+      }
+      // return the diagonal array
+    },
+
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      //create an diagonalArray and store the result of getDiagonal(columnIndex, 'major'))
+      //return the result of detectConflicts(diagonalArray)
     },
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      //iterate through all major diagonal: check indexes from -(n-1) to (n-2)
+      //if a diagonal has a conflict return true
+      //return false
     },
-
-
 
     // Minor Diagonals - go from top-right to bottom-left
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      //create an diagonalArray and store the result of getDiagonal(columnIndex, 'minor'))
+      //return the result of detectConflicts(diagonalArray)
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      //iterate through all minor diagonals: check indexes from 1 to 2n-1
+      //if a diagonal has a conflict return true
+      //return false
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
