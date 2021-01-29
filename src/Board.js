@@ -154,9 +154,10 @@
           //if coordinates are in bound we push the val to the diag array
           if (this._isInBounds(rowIndex, columnIndex)) {
             diagonal.push(this.rows()[rowIndex][columnIndex]);
+          
           }
           //step to next coordinate (X+1, Y+1)
-
+            
         }
 
       } else {
